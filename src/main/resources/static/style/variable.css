@@ -1,0 +1,15 @@
+:root {
+    --layout-color : #F5F7FD;
+    --title-color : #48506D;
+    --text-color : #6c7597;
+    --green-color : #6AB123;
+    --danger-color : #EA5230;
+    --white : #ffffff;
+    --card-shadow : 0px 10px 40px rgba(41, 50, 65, .06); 
+    --sidebar-shadow : 0px 10px 40px rgba(41, 50, 65, .06);
+    --header-shadow : 0px 10px 40px rgba(41, 50, 65, .06);
+    --primary-color : #5297ff;
+    --text-color-secondary: #83888f;
+    --surface-500: #797a7b;
+    --active-color: rgba(82, 151, 255, 0.12);
+}

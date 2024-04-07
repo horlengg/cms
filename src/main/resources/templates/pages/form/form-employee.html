@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="cms-template">
+        <h1 th:text="${formTitle}" class="text-blue-400 text-xl font-medium"></h1>
+        <!-- form  -->
+        <div class="mt-5">
+            <form action="#" th:action="@{/employee/form}" th:object="${empFormDTO}" method="post"  enctype="multipart/form-data"> 
+                <div class="flex">
+                    <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <input th:disabled="${isViewForm == true}" type="number" hidden th:field="*{empId}">
+                        <div>
+                            <label for="fullName" class="block mb-2 text-sm font-medium">Full Name</label>
+                            <input th:disabled="${isViewForm == true}" type="text" id="fullName" th:field="*{fullName}" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="gender" class="block mb-2 text-sm font-medium">Gender</label>
+                            <select th:disabled="${isViewForm == true}" id="gender" th:field="*{gender}" class="bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block outline-none w-full p-2.5" required>
+                                <option value="" selected>Choose</option>
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="phonenumber" class="block mb-2 text-sm font-medium">Phone</label>
+                            <input th:disabled="${isViewForm == true}" type="tel" th:field="*{phone}" id="phonenumber" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="maritalStatus" class="block mb-2 text-sm font-medium">Marital Status</label>
+                                <select th:disabled="${isViewForm == true}" id="maritalStatus" th:field="*{maritalStatus}" class="bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block outline-none w-full p-2.5" required>
+                                    <option value="" selected>Choose</option>
+                                    <option value="SINGLE">Single</option>
+                                    <option value="MARRIED">Married</option>
+                                </select>
+                        </div>
+                        <div>
+                            <label for="idNo" class="block mb-2 text-sm font-medium">ID No</label>
+                            <input th:disabled="${isViewForm == true}" type="number" th:field="*{idNo}" id="idNo" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="idType" class="block mb-2 text-sm font-medium">ID Type</label>
+                            <input th:disabled="${isViewForm == true}" type="text" th:field="*{idType}" id="idType" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="dob" class="block mb-2 text-sm font-medium">Date Of Birth</label>
+                            <input th:disabled="${isViewForm == true}" type="date" th:field="*{dob}" id="dob" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="effectiveDate" class="block mb-2 text-sm font-medium">Effective Date</label>
+                            <input th:disabled="${isViewForm == true}" type="date" th:field="*{effectiveDate}" id="effectiveDate" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="contractEndDate" class="block mb-2 text-sm font-medium">Contract End Date</label>
+                            <input th:disabled="${isViewForm == true}" type="date" th:field="*{contractEndDate}" id="contractEndDate" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        <div>
+                            <label for="address" class="block mb-2 text-sm font-medium">Present Address</label>
+                            <input th:disabled="${isViewForm == true}" type="text" th:field="*{presentAddress}" id="address" class="shadow-sm outline-none bg-transparent border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
+                        </div>
+                        
+                    </div>
+                    <div class="flex-1 flex flex-col items-center justify-center">
+                        <img data-target="profile-image" th:src="${profileImage}" alt="image" class="h-[200px] rounded-[20px]">
+                        <div th:if="${isViewForm == false}" class="mt-5 flex justify-center">
+                            <label for="profile-image">
+                                <input data-fileuploader id="profile-image" name="profile-image" type="file" hidden accept="image/*">
+                                <span class="cursor-pointer bg-[#F5F7FD] font-medium rounded-lg text-xs px-4 py-2">Select File</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${isViewForm == false}" class="flex justify-end items-center gap-2 mt-5">
+                    <button type="reset" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">
+                        Reset
+                    </button>
+                    <button th:text="${btnName}" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+                    </button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

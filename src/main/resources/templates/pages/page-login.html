@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS SYSTEM</title>
+    <link rel="shortcut icon" th:href="@{/images/app-logo.jpg}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/style/login.css}">
+    <link rel="stylesheet" th:href="@{/style/style.css}">
+    <link rel="stylesheet" th:href="@{/style/index.css}">
+</head>
+
+<body class="text-[#48506D] text-[14px]">
+    <div class="login_layout">
+        <div class="form_wrapper flex items-center gap-5">
+            <div class="flex-1 flex flex-col items-center">
+                <h1 class="text-[#838E00] font-bold text-2xl">Canteen Management</h1>
+                <h1 class="text-[#838E00] font-bold text-2xl">System</h1>
+            </div>
+            <form class="flex-1" method="post" role="form" th:action="@{/login}">
+                <div class="mt-5 relative">
+                    <span class="absolute left-[5px] bottom-[5px]">
+                        <svg width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z"></path>
+                        </svg>
+                    </span>
+                    <input type="text" id="username" name="username" placeholder="Email" required>
+                </div>
+                <div class="mt-5 relative">
+                    <span class="absolute left-[5px] bottom-[5px]">
+                        <svg width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM5 10V20H19V10H5ZM11 14H13V16H11V14ZM7 14H9V16H7V14ZM15 14H17V16H15V14ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16Z"></path>
+                        </svg>
+                    </span>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="mt-6 flex justify-center">
+                    <button type="submit" class="">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

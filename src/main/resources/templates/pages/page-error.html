@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <title>Error Page</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" type="text/css">
+  </head>
+  <body>
+    <h4 class="text-red-500 text-center mt-5" th:text="${errorMessage}"></h4>
+    <div class="mt-5 flex justify-center">
+      <a th:href="@{/{url}(url=${backUrl})}">
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+          Back Home
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

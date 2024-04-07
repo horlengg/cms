@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="">
+        <div class="grid xl:grid-cols-5 lg:grid-cols-4 grid-cols-3 gap-5">
+
+          <a th:href="@{/employee}">
+            <div class="cms_card">
+              <div>
+                <h4>Employee</h4>
+                <h4 th:text="${totalEmployees}" class="text-[20px] font-bold mt-[5px]"></h4>
+              </div>
+              <div>
+                <img th:src="@{/images/user-icon.svg}" alt="icon">
+              </div>
+            </div>
+          </a>
+          
+          <a th:href="@{/user}">
+            <div class="cms_card">
+              <div>
+                <h4>User</h4>
+                <h4 th:text="${totalUsers}" class="text-[20px] font-bold mt-[5px]"></h4>
+              </div>
+              <div>
+                <img th:src="@{/images/userlock-icon.svg}" alt="icon">
+              </div>
+            </div>
+          </a>
+
+          <a th:href="@{/category}">
+            <div class="cms_card">
+              <div>
+                <h4>Category</h4>
+                <h4 th:text="${totalCategories}" class="text-[20px] font-bold mt-[5px]"></h4>
+              </div>
+              <div>
+                <img th:src="@{/images/product-icon.svg}" alt="icon">
+              </div>
+            </div>
+          </a>
+          
+          <a th:href="@{/supplier}">
+            <div class="cms_card">
+              <div>
+                <h4>Supplier</h4>
+                <h4 th:text="${totalSuppliers}" class="text-[20px] font-bold mt-[5px]"></h4>
+              </div>
+              <div>
+                <img th:src="@{/images/supplier-icon.svg}" alt="icon">
+              </div>
+            </div>
+          </a>
+
+          <a th:href="@{/product}">
+            <div class="cms_card">
+              <div>
+                <h4>Product</h4>
+                <h4 th:text="${totalProducts}" class="text-[20px] font-bold mt-[5px]"></h4>
+              </div>
+              <div>
+                <img th:src="@{/images/product-icon.svg}" alt="icon">
+              </div>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+      <div class="cms-template mt-5">
+        <h3 class="text-[18px] font-medium">Order List</h3>
+        <div class="relative overflow-x-auto mt-5">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Customer Name</th>
+                <th scope="col" class="px-6 py-3">Date Time</th>
+                <th scope="col" class="px-6 py-3">Total Item</th>
+                <th scope="col" class="px-6 py-3">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                th:each="user : ${orderList}"
+                class="odd:bg-white even:bg-gray-50 border-b"
+              >
+                <td th:text="${user.customerName}" class="px-6 py-4">N/A</td>
+                <td th:text="${user.dateTime}" class="px-6 py-4">N/A</td>
+                <td th:text="${user.totalItem}" class="px-6 py-4">N/A</td>
+                <td th:text="${'$ ' + user.amount}" class="px-6 py-4">N/A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

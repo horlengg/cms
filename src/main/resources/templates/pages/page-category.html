@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="cms-template">
+        <h1 class="text-[18px] font-medium">Category Management</h1>
+        <!-- <div class="flex justify-end">
+          <a th:href="@{/category/form}">
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+              Create
+            </button>
+          </a>
+        </div> -->
+        <div class="relative overflow-x-auto mt-5">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Description</th>
+                <th scope="col" class="px-6 py-3">Created Date</th>
+                <th scope="col" class="px-6 py-3">Updated Date</th>
+                <th scope="col" class="px-6 py-3">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                th:each="category : ${categories}"
+                class="odd:bg-white even:bg-gray-50 border-b"
+              >
+                <td th:text="${category.name}" class="px-6 py-4">N/A</td>
+                <td th:text="${category.description}" class="px-6 py-4">N/A</td>
+                <td th:data-value="${category.createdAt}" data-dateformat class="px-6 py-4">N/A</td>
+                <td th:data-value="${category.updatedAt}"  data-dateformat class="px-6 py-4">N/A</td>
+                <td class="px-6 py-4">
+                  <!-- <div class="flex items-center gap-[2px]">
+                    <a th:href="@{/employee/form/view/{id}(id=${category.id})}">
+                      <button type="button" class="crud_btn">
+                        <img th:src="@{/images/icon-eye.svg}" alt="icon">
+                      </button>
+                    </a>
+                    <a th:href="@{/employee/form/{id}(id=${category.id})}">
+                      <button type="button" class="crud_btn">
+                        <img th:src="@{/images/icon-pen.svg}" alt="icon">
+                      </button>
+                    </a>
+                    <a class="delete-controller" th:data-name="${category.name}" th:href="@{/employee/delete/{id}(id=${category.id})}">
+                      <button type="button" class="crud_btn btn_danger">
+                        <img th:src="@{/images/icon-delete.svg}" alt="icon">
+                      </button>
+                    </a>
+                  </div> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

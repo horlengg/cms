@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="cms-template">
+        <h1 class="text-[18px] font-medium">User Management</h1>
+        <div class="flex justify-end"></div>
+        <div class="relative overflow-x-auto mt-5">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Email</th>
+                <th scope="col" class="px-6 py-3">Role</th>
+                <th scope="col" class="px-6 py-3">Created At</th>
+                <th scope="col" class="px-6 py-3">Updated At</th>
+                <th scope="col" class="px-6 py-3">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="user : ${listUser}" class="odd:bg-white even:bg-gray-50 border-b">
+                <td th:text="${user.email}" class="px-6 py-4">N/A</td>
+                <td th:text="${user.role}" class="px-6 py-4">N/A</td>
+                <td th:text="${user.createdAt}" class="px-6 py-4">N/A</td>
+                <td th:text="${user.updatedAt}" class="px-6 py-4">N/A</td>
+                <td class="px-6 py-4">
+                  <!-- <div class="flex items-center gap-[2px]">
+                    <a th:href="@{/employee/form/view/{id}(id=${emp.empId})}">
+                      <button type="button" class="crud_btn">
+                        <img th:src="@{/images/icon-eye.svg}" alt="icon">
+                      </button>
+                    </a>
+                    <a th:href="@{/employee/form/{id}(id=${emp.empId})}">
+                      <button type="button" class="crud_btn">
+                        <img th:src="@{/images/icon-pen.svg}" alt="icon">
+                      </button>
+                    </a>
+                    <a class="delete-controller" th:data-name="${emp.fullName}" th:href="@{/employee/delete/{id}(id=${emp.empId})}">
+                      <button type="button" class="crud_btn btn_danger">
+                        <img th:src="@{/images/icon-delete.svg}" alt="icon">
+                      </button>
+                    </a>
+                  </div> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

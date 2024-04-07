@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="cms-template">
+        <h1 class="text-[18px] font-medium">Supplier Management</h1>
+        <div class="relative overflow-x-auto mt-5">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Phone</th>
+                <th scope="col" class="px-6 py-3">Email</th>
+                <th scope="col" class="px-6 py-3">Created Date</th>
+                <th scope="col" class="px-6 py-3">Updated Date</th>
+                <th scope="col" class="px-6 py-3">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="supplier : ${supplierDTOs}" class="odd:bg-white even:bg-gray-50 border-b">
+                <td th:text="${supplier.name}" class="px-6 py-4">N/A</td>
+                <td th:text="${supplier.phone}" class="px-6 py-4">N/A</td>
+                <td th:text="${supplier.email}" data-dateformat class="px-6 py-4">N/A</td>
+                <td th:data-value="${supplier.createdAt}"  data-dateformat class="px-6 py-4">N/A</td>
+                <td th:data-value="${supplier.updatedAt}"  data-dateformat class="px-6 py-4">N/A</td>
+                <td class="px-6 py-4">
+                  <!-- <div class="flex items-center gap-[2px]">
+                    <a th:href="@{/employee/form/view/{id}(id=${supplier.id})}">
+                      <button type="button" class="crud_btn">
+                        <img th:src="@{/images/icon-eye.svg}" alt="icon">
+                      </button>
+                    </a>
+                    <a th:href="@{/employee/form/{id}(id=${supplier.id})}">
+                      <button type="button" class="crud_btn">
+                        <img th:src="@{/images/icon-pen.svg}" alt="icon">
+                      </button>
+                    </a>
+                    <a class="delete-controller" th:data-name="${supplier.name}" th:href="@{/employee/delete/{id}(id=${supplier.id})}">
+                      <button type="button" class="crud_btn btn_danger">
+                        <img th:src="@{/images/icon-delete.svg}" alt="icon">
+                      </button>
+                    </a>
+                  </div> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
